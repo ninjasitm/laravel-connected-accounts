@@ -2,8 +2,6 @@
 
 namespace Nitm\ConnectedAccounts\Traits;
 
-use Nitm\ConnectedAccounts\Models\SocialProvider;
-
 trait HasConnectedAccounts
 {
     /**
@@ -23,7 +21,7 @@ trait HasConnectedAccounts
     public function socials()
     {
         $foreignKeys = config('nitm-connected-accounts.foreign_keys');
-        $class = config('nitm-connected-accounts.user_model');
+        $class = config('nitm-connected-accounts.user_model', config('nitm-content.user_model'), 'App\Models\User');
         return $this->belongsToMany($class, 'user_has_social_provider')
             ->as('token')
             ->withPivot('token', 'expires_in', 'offline_token', $foreignKeys['users']);
