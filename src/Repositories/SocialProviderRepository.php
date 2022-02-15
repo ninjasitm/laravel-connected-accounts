@@ -7,7 +7,7 @@
 namespace Nitm\ConnectedAccounts\Repositories;
 
 use Nitm\ConnectedAccounts\Models\SocialProvider;
-use Nitm\ConnectedAccounts\Repositories\BaseRepository;
+use Nitm\Content\Repositories\BaseRepository;
 
 /**
  * Class SocialProviderRepository

@@ -2,7 +2,7 @@
 
 namespace Nitm\ConnectedAccounts\Models;
 
-use Nitm\Content\Models\SocialProvider as Model;
+use Nitm\Content\Models\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -67,6 +67,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class SocialProvider extends Model
 {
+    protected $fillable = ['label', 'slug', 'scopes', 'parameters', 'override_scopes', 'stateless'];
+
     public function resolveRouteBinding($value, $field = null)
     {
         $realField = $field ?? is_numeric($value) ? $this->getRouteKeyName() : 'slug';

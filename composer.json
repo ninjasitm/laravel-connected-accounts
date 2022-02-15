@@ -28,6 +28,7 @@
         "lcobucci/jwt": "^4.0",
         "mad-web/laravel-social-auth": "dev-dev-master",
         "nitm/laravel-base": "*",
+        "orchestra/testbench": "^6.22",
         "spatie/laravel-activitylog": "*"
     },
     "require-dev": {
@@ -70,40 +71,12 @@
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "./nova"
-        },
-        {
             "type": "vcs",
             "url": "git@github.com:InfyOmLabs/swaggervel.git"
         },
         {
             "type": "vcs",
             "url": "git@gitlab.com:nitm/laravel-base.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@gitlab.com:nitm/laravel-feedback.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:ninjasitm/nova-settings-tool.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:ninjasitm/nova-comments.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:ninjasitm/laravel-comments.git"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/NovaReportedContent"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/NovaComments"
         },
         {
             "type": "vcs",

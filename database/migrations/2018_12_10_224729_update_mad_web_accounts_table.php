@@ -14,7 +14,7 @@ class UpdateMadWebAccountsTable extends Migration
      */
     public function up()
     {
-        $table_names = config('nitm-connected-accounts.table_names');
+        $table_names = config('social-auth.table_names');
 
         // Get teams table name
         $class = config('nitm-content.team_model', null);

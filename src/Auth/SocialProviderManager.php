@@ -16,7 +16,7 @@ class SocialProviderManager extends BaseSocialProviderManager
      */
     public function socialTeamQuery(string $key)
     {
-        return $this->social->teams()->wherePivot(config('nitm-connected-accounts.foreign_keys.socials'), $key);
+        return $this->social->teams()->wherePivot(config('social-auth.foreign_keys.socials'), $key);
     }
 
     /**

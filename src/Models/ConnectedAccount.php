@@ -2,8 +2,9 @@
 
 namespace Nitm\ConnectedAccounts\Models;
 
-use Nitm\Content\Models\SocialProvider as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Connected Account
@@ -22,34 +23,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  * @SWG\Property(
- *          property="label",
- *          description="label",
+ *          property="offline_token",
+ *          description="offline_token",
  *          type="string"
  *      ),
  * @SWG\Property(
- *          property="slug",
- *          description="slug",
- *          type="string"
- *      ),
- * @SWG\Property(
- *          property="scopes",
- *          description="scopes",
- *          type="string"
- *      ),
- * @SWG\Property(
- *          property="parameters",
- *          description="parameters",
- *          type="string"
- *      ),
- * @SWG\Property(
- *          property="override_scopes",
- *          description="override_scopes",
+ *          property="token",
+ *          description="token",
  *          type="boolean"
  *      ),
  * @SWG\Property(
- *          property="stateless",
- *          description="stateless",
- *          type="boolean"
+ *          property="expires_in",
+ *          description="expires_in",
+ *          type="string",
+ *          format="date-time"
  *      ),
  * @SWG\Property(
  *          property="created_at",
@@ -65,11 +52,34 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      )
  * )
  */
-class SocialProvider extends Model
+class ConnectedAccount extends Model
 {
+    use HasFactory;
+
+    protected $dates = [];
+
+    protected $attributes = ['token' => '{}'];
+
+    /**
+     * Resolve route binding
+     *
+     * @param  mixed $value
+     * @param  mixed $field
+     * @return void
+     */
     public function resolveRouteBinding($value, $field = null)
     {
         $realField = $field ?? is_numeric($value) ? $this->getRouteKeyName() : 'slug';
         return $this->where($realField, $value)->first();
+    }
+
+    /**
+     * Get Table
+     *
+     * @return void
+     */
+    public function getTable()
+    {
+        return config('social-auth.table_names.user_has_social_provider', 'user_has_social_provider');
     }
 }

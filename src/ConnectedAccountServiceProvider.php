@@ -20,10 +20,10 @@ class ConnectedAccountServiceProvider extends ServiceProvider
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
             $this->publishes([
                 __DIR__ . '/../database/migrations' => database_path('migrations'),
-            ], 'nitm-connected-accounts-migrations');
+            ], 'social-auth-migrations');
             $this->publishes([
-                __DIR__ . '/../config/config.php' => config_path('nitm-connected-accounts.php'),
-            ], 'nitm-connected-accounts-config');
+                __DIR__ . '/../config/config.php' => config_path('social-auth.php'),
+            ], 'social-auth-config');
         }
     }
 
@@ -32,7 +32,7 @@ class ConnectedAccountServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'nitm-connected-accounts');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'social-auth');
     }
 
     /**
@@ -43,6 +43,6 @@ class ConnectedAccountServiceProvider extends ServiceProvider
      */
     public static function useNovaUser($class)
     {
-        config(['nitm-connected-accounts.nova.user' => $class]);
+        config(['social-auth.nova.user' => $class]);
     }
 }

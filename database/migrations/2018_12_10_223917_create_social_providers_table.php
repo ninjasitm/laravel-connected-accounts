@@ -13,9 +13,9 @@ class CreateSocialProvidersTable extends Migration
      */
     public function up()
     {
-        $tableNames  = config('nitm-connected-accounts.table_names');
-        $foreignKeys = config('nitm-connected-accounts.foreign_keys');
-        $modelName   = config('nitm-connected-accounts.models.user');
+        $tableNames  = config('social-auth.table_names');
+        $foreignKeys = config('social-auth.foreign_keys');
+        $modelName   = config('social-auth.models.user');
 
         if (!empty($modelName)) {
 
@@ -57,6 +57,8 @@ class CreateSocialProvidersTable extends Migration
                         ->on($tableNames['social_providers'])
                         ->onDelete('cascade');
 
+                    $table->timestamps();
+
                     $table->primary([$foreignKeys['users'], 'social_provider_id']);
                 }
             );
@@ -70,7 +72,7 @@ class CreateSocialProvidersTable extends Migration
      */
     public function down()
     {
-        $tableNames = config('nitm-connected-accounts.table_names');
+        $tableNames = config('social-auth.table_names');
         if (!empty($tableNames)) {
 
             Schema::dropIfExists($tableNames['user_has_social_provider']);

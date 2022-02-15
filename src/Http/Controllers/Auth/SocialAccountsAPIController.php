@@ -1,6 +1,6 @@
 <?php
 
-namespace Nitm\ConnectedAccounts\Http\Controllers\API\Auth;
+namespace Nitm\ConnectedAccounts\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Nitm\ConnectedAccounts\Models\SocialProvider;
@@ -32,9 +32,9 @@ class SocialAccountsAPIController extends ApiController
         parent::__construct($auth);
         $this->auth = $auth;
         $this->socialite = $socialite;
-        $this->redirectTo = config('nitm-connected-accounts.redirect');
+        $this->redirectTo = config('social-auth.redirect');
 
-        $className = config('nitm-connected-accounts.models.user');
+        $className = config('social-auth.models.user');
         $this->userModel = new $className;
 
         if (request()->route('social')) {
