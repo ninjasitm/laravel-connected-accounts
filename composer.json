@@ -16,19 +16,13 @@
         "awobaz/compoships": "^2.1",
         "dms/phpunit-arraysubset-asserts": "^0.2.1",
         "doctrine/dbal": "~2.3",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
         "infyomlabs/generator-builder": "dev-master",
         "infyomlabs/laravel-generator": "8.0.x-dev",
         "infyomlabs/swagger-generator": "dev-master",
-        "kreait/firebase-php": "5.15.0",
-        "kreait/firebase-tokens": "1.15.0",
-        "laravel-notification-channels/fcm": "~2.0",
         "laravel/framework": "^8.0",
         "lcobucci/jwt": "^4.0",
         "mad-web/laravel-social-auth": "dev-dev-master",
         "nitm/laravel-base": "*",
-        "orchestra/testbench": "^6.22",
         "spatie/laravel-activitylog": "*"
     },
     "require-dev": {
@@ -39,6 +33,7 @@
         "limedeck/phpunit-detailed-printer": "^5.0",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
+        "orchestra/testbench": "^6.22",
         "phpunit/phpunit": "^9.3.3",
         "vimeo/psalm": "^3.4"
     },
@@ -65,8 +60,7 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"
         ]
     },
     "repositories": [
