@@ -44,18 +44,19 @@
     },
     "autoload": {
         "psr-4": {
-            "Nitm\\ConnectedAccounts\\": "src/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+            "Nitm\\ConnectedAccounts\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Nitm\\ConnectedAccounts\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nitm\\COnnectedAccounts\\ConnectedAccountServiceProvider"
+            ]
         }
     },
     "scripts": {
