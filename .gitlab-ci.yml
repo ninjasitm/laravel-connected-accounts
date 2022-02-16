@@ -24,6 +24,6 @@ unit-test-job:   # This job runs in the test stage.
   script:
     - cp .env.example .env
     - php composer.phar install
-    - php artisan key:generate
-    - php artisan migrate
-    - vendor/bin/testbench test --parallel
+    - php vendor/bin/testbench key:generate
+    - php vendor/bin/testbench migrate
+    - php vendor/bin/testbench test --parallel
