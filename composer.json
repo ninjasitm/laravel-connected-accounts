@@ -55,7 +55,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Nitm\\COnnectedAccounts\\ConnectedAccountServiceProvider"
+                "Nitm\\ConnectedAccounts\\ConnectedAccountServiceProvider"
             ]
         }
     },
