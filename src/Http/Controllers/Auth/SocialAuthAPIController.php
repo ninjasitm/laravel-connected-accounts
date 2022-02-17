@@ -25,7 +25,7 @@ use Illuminate\Auth\Events\Registered;
 
 class SocialAuthAPIController extends ApiController
 {
-    public function __construct(StatefulGuard $auth, Socialite $socialite)
+    public function __construct($auth = null, Socialite $socialite = null)
     {
         parent::__construct($auth);
         $this->auth = $auth;

@@ -4,6 +4,7 @@ namespace Nitm\ConnectedAccounts\Models;
 
 use Nitm\Content\Models\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Nitm\ConnectedAccounts\Contracts\Models\SocialProvider as ModelsSocialProvider;
 
 /**
  * Social Provider
@@ -65,7 +66,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      )
  * )
  */
-class SocialProvider extends Model
+class SocialProvider extends Model implements ModelsSocialProvider
 {
     protected $fillable = ['label', 'slug', 'scopes', 'parameters', 'override_scopes', 'stateless'];
 

@@ -14,11 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$routeBase = config("social-auth.routes.base", "connected-accounts");
-$routeName = config("social-auth.routes.name", "connected-accounts");
 
-Route::middleware(config("social-auth.routes.middleware", ['api']))->group(function () use ($routeBase, $routeName) {
-    Route::get("{$routeBase}/{provider}/start/{type}", "API\Auth\SocialAuthAPIController@show")->name($routeName . ".start");
-    Route::get("{$routeBase}/{provider}/mobile", "API\Auth\SocialAuthAPIController@storeForMobile")->name($routeName . ".mobile");
-    Route::get("{$routeBase}/{provider}/web", "API\Auth\SocialAuthAPIController@storeForWeb")->name($routeName . ".web");
-});
+$routeBase = config("social-auth.routes.prefix", "connected-accounts");
+$routeName = config("social-auth.routes.name", "connected-accounts");
+Route::middleware(config("social-auth.routes.middleware", ['api']))
+    ->prefix($routeBase)
+    ->as($routeName . '.')
+    ->namespace(config("nitm-notifications.routes.namespace", 'Nitm\ConnectedAccounts\Http\Controllers'))
+    ->group(function () {
+        Route::get("{provider}/start/{type}", "Auth\SocialAuthAPIController@show")->name("start");
+        Route::get("{provider}/mobile", "Auth\SocialAuthAPIController@storeForMobile")->name("mobile");
+        Route::get("{provider}/web", "Auth\SocialAuthAPIController@storeForWeb")->name("web");
+
+        Route::apiResource("", "Auth\SocialAccountsAPIController")->parameters([
+            "" => "account"
+        ]);
+    });

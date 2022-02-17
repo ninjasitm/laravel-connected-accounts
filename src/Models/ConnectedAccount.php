@@ -5,6 +5,7 @@ namespace Nitm\ConnectedAccounts\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Nitm\ConnectedAccounts\Contracts\Models\ConnectedAccount as ModelsConnectedAccount;
 
 /**
  * Connected Account
@@ -52,7 +53,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *      )
  * )
  */
-class ConnectedAccount extends Model
+class ConnectedAccount extends Model implements ModelsConnectedAccount
 {
     use HasFactory;
 

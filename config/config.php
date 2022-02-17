@@ -7,10 +7,20 @@ return [
     'user_model' => env('NITM_CONNECTED_ACCOUNTS_USER_MODEL', 'Nitm\Content\Models\User'),
 
     /**
+     * Connected Account model
+     */
+    'connected_account_model' => env('NITM_CONNECTED_ACCOUNTS_CONNECTED_ACCOUNT_MODEL', 'Nitm\ConnectedAccounts\Models\ConnectedAccount'),
+
+    /**
+     * Connected Account model
+     */
+    'social_provider_model' => env('NITM_CONNECTED_ACCOUNTS_SOCIAL_PROVIDER_MODEL', 'Nitm\ConnectedAccounts\Models\SocialProvider'),
+
+    /**
      * Routes configuration
      */
     'routes' => [
-        'prefix' => env('NITM_CONNECTED_ACCOUNTS_ROUTES_PREFIX', 'connected-accounts'),
+        'prefix' => env('NITM_CONNECTED_ACCOUNTS_ROUTES_PREFIX', 'auth/connected-accounts'),
         'middleware' => env('NITM_CONNECTED_ACCOUNTS_ROUTES_MIDDLEWARE', ['api']),
     ],
 
