@@ -2,9 +2,13 @@
 
 namespace Nitm\ConnectedAccounts\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Nitm\Content\Models\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Nitm\ConnectedAccounts\Contracts\Models\SocialProvider as ModelsSocialProvider;
+use Nitm\Content\Traits\CustomWith;
+use Nitm\Content\Traits\Model as TraitsModel;
+use Nitm\Content\Traits\Search;
 
 /**
  * Social Provider
@@ -66,8 +70,10 @@ use Nitm\ConnectedAccounts\Contracts\Models\SocialProvider as ModelsSocialProvid
  *      )
  * )
  */
-class SocialProvider extends Model implements ModelsSocialProvider
+class SocialProvider extends \MadWeb\SocialAuth\Models\SocialProvider implements ModelsSocialProvider
 {
+    use HasFactory, TraitsModel, Search, CustomWith;
+
     protected $fillable = ['label', 'slug', 'scopes', 'parameters', 'override_scopes', 'stateless'];
 
     public function resolveRouteBinding($value, $field = null)
